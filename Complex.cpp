@@ -8,6 +8,8 @@ Complex::Complex()
 
 
 // Constructors
+Complex();
+
 Complex::Complex(double re, double im)
 {
 	_real = re;
@@ -32,6 +34,24 @@ double Complex::imag() const
 }
 
 
+	// Constructors
+	Complex();
+	Complex(double re, double im);
+	Complex(const Complex& z);
+
+	// access values
+	double real() const;
+	double imag() const;
+
+	// assignment
+	Complex& operator=(double r);
+	Complex& operator=(const Complex& z);
+	Complex& operator+=(const Complex& z);
+	Complex& operator-=(const Complex& z);
+	Complex& operator*=(const Complex& z);
+	Complex& operator/=(const Complex& z);
+
+	
 // basic math operations
 Complex operator+(const Complex& a, const Complex& b)
 {
@@ -120,7 +140,7 @@ bool operator==(const Complex& a, const Complex& b)
 
 bool operator==(const Complex& a, double r)
 {
-	if (a.real() + a.imag() == r)
+	if (a.real() == r)
 		return true;
 	else
 		return false;
@@ -139,7 +159,7 @@ bool operator!=(const Complex& a, const Complex& b)
 
 bool operator!=(const Complex& a, double r)
 {	
-	if (a.real() + a.imag() != r)
+	if (a.real() != r && a.imag() != 0)
 		return true;
 	else
 		return false;
