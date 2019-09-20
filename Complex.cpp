@@ -87,19 +87,25 @@ Complex operator*(const Complex& a, const Complex& b)
 
 	return total;
 }
-/*
-Complex operator/(const Complex& a, const Complex& b);
+
+Complex operator/(const Complex& a, const Complex& b)
 {
 	
         
 //	VERY BUGGY
-
-
+	Complex bconj(b.real(), -b.imag());
+	Complex num, den; // denominator always has only real part
+	num = a * bconj;
+	den = b * bconj;
+	double reals = num.real() / den.real();
+	double imags = num.imag() / den.real();
+	
 	Complex total(reals,imags);
+
 
 	return total;
 }
-*/
+
 // norm returns the squared magnitude of z
 double norm(const Complex& z)			//FOIL
 {						//(8+i)(8+i)
@@ -126,7 +132,12 @@ Complex conj(const Complex& z)
 
 	return total;
 }
-
+Complex& Complex::operator=(const Complex& z)
+{
+        _real = z.real();
+        _imag = z.imag();
+        return *this;
+}
 
 // comparison
 bool operator==(const Complex& a, const Complex& b)
