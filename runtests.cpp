@@ -52,9 +52,9 @@ int main()
                 "(3 + 9i) - (18 + 23i)");
         Assert(mult_result.real() == -153 && mult_result.imag() == 231,
                 "(18 + 23i) * (3 + 9i)");
-        Assert(div1_result.real() == (29./10.) && div1_result.imag() ==
-			(31./30.), "(18 + 23i) / (3 + 9i)");
-        Assert(div2_result.real() == (261./863.) && div2_result.imag() ==
+        Assert(div1_result.real() == (87./30.) && div1_result.imag() ==
+			(-31./30.), "(18 + 23i) / (3 + 9i)");
+        Assert(div2_result.real() == (261./853.) && div2_result.imag() ==
 			(93./853), "(3 + 9i) / (18 + 23i)");
         //Assert(conjugate1.real() == 18 && conjugate1.imag() == -23,
         //       "conjugate of (18 + 23i)")

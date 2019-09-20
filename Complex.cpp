@@ -70,16 +70,28 @@ Complex operator*(const Complex& a, const Complex& b)
 
 Complex operator/(const Complex& a, const Complex& b)
 {
-	
-        
-//	VERY BUGGY
-	Complex bconj(b.real(), -b.imag());
+	/*Complex bconj(b.real(), -b.imag());
 	Complex num, den; // denominator always has only real part
 	num = a * bconj;
 	den = b * bconj;
 	double reals = num.real() / den.real();
 	double imags = num.imag() / den.real();
+	*/
+
+	double top_first = a.real() * b.real();
+	double top_inNout = a.real() * -1 * b.imag() + b.real() * a.imag();
+	double top_last = a.imag() * b.imag();
+
+	double bot_first = b.real() * b.real();
+	double bot_last =  b.imag() * b.imag();
 	
+	double top_reals = top_last + top_first;
+	double top_imags = top_inNout;
+	double bottom = bot_first + bot_last;
+	
+	double reals = top_reals / bottom;
+	double imags = top_imags / bottom;
+
 	Complex total(reals,imags);
 
 
