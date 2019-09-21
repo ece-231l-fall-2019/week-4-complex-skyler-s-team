@@ -100,10 +100,18 @@ int main()
 	Assert(!(num5==120.2), "num5==120.2");
        	Assert(!(num5!=140.25), "num5!=140.25");
 
+/*
+	Complex num7(-9.23, 12.4);
+	Complex num8(12.4, -9.23);
 
-	//Complex num7(-9.23, 12.4);
-	//Complex num8(12.4, -9.23);
+	Assert((num7+=num8).real() == , (num7+=num8).imag() == , "num7+=num8");
+	Assert((num7-=num8).real() ==, (num7-=num8).imag() ==, "num7-=num8");
+	Assert((num7*=num8).real() ==, (num7*=num8).imag() ==, "num7*=num8");
+	Assert((num7/=num8).real() ==, (num7/=num8).imag() ==, "num7/=num8");
 
+	
+
+*/
 	return 0;
 }
 
