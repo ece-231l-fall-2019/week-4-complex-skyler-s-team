@@ -31,11 +31,11 @@ double Complex::imag() const
 	return _imag;
 }
 
-
+/*
 // assignment
 Complex& operator=(double r)
 {
-
+	
 
 }
 
@@ -58,7 +58,11 @@ Complex& operator+=(const Complex& z)
 
 Complex& operator-=(const Complex& z);i
 {
+	
+	_real -= z.real();
+	-imag -= z.imag();
 
+	return *this;
 
 }
 
@@ -72,7 +76,7 @@ Complex& operator/=(const Complex& z);
 {
 
 }
-
+*/
 // basic math operations
 Complex operator+(const Complex& a, const Complex& b)
 {
@@ -155,21 +159,23 @@ double norm(const Complex& z)
 
 // conj returns the complex conjugate of z
 Complex conj(const Complex& z)
-{							//(a + bi)(a - bi)
-	double reals1 = z.real() * z.real();		//a * a = a^2
-        double reals2 = -1 * z.imag() * z.imag();		// bi * bi = b^2 i^2 => i^2 = -1 => -1*b^2
+{					
+	double reals1 = z.real() * z.real();	
+        double reals2 =  z.imag() * z.imag();
 
-	double reals_tot = reals1 + reals2;		//no need to calculate inner and outer since they cancel each other out
+	double reals_tot = reals1 + reals2;		
 	
-	Complex total(reals_tot, 0);
+	Complex total(reals_tot, 0.0);
 
 	return total;
 }
+
 Complex& Complex::operator=(const Complex& z)
 {
         _real = z.real();
         _imag = z.imag();
-        return *this;
+
+	return *this;
 }
 
 // comparison
