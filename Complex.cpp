@@ -35,7 +35,8 @@ double Complex::imag() const
 // assignment
 Complex& operator=(double r)
 {
-	
+	_real = r;
+	_imag = 0;	
 
 }
 
@@ -44,37 +45,43 @@ Complex& operator=(const Complex& z)
 	_real = z.real();
 	_imag = z.imag();
 
-
+	return *this;
 }
 
 Complex& operator+=(const Complex& z)
 {
 	_real += z.real();
-	-imag += z.imag();
+	_imag += z.imag();
 
 	return *this;
 
 }
 
-Complex& operator-=(const Complex& z);i
+Complex& operator-=(const Complex& z)
 {
 	
 	_real -= z.real();
-	-imag -= z.imag();
+	_imag -= z.imag();
 
 	return *this;
 
 }
 
-Complex& operator*=(const Complex& z);
+Complex& operator*=(const Complex& z)
 {
+		
+	_real *= z.real();
+	_imag *= -1*z.imag();
 
-
+	return *this
 }
 
 Complex& operator/=(const Complex& z);
 {
+	_real /= ;
+	_imag /= ;
 
+	return *this;
 }
 */
 // basic math operations
@@ -115,14 +122,6 @@ Complex operator*(const Complex& a, const Complex& b)
 
 Complex operator/(const Complex& a, const Complex& b)
 {
-	/*Complex bconj(b.real(), -b.imag());
-	Complex num, den; // denominator always has only real part
-	num = a * bconj;
-	den = b * bconj;
-	double reals = num.real() / den.real();
-	double imags = num.imag() / den.real();
-	*/
-
 	double top_first = a.real() * b.real();
 	double top_inNout = a.real() * -1 * b.imag() + b.real() * a.imag();
 	double top_last = a.imag() * b.imag();
@@ -190,7 +189,7 @@ bool operator==(const Complex& a, const Complex& b)
 
 bool operator==(const Complex& a, double r)
 {
-	if (a.real() + a.imag() == r)
+	if (a.real() == r && a.imag() == 0)
 		return true;
 	else
 		return false;
@@ -209,7 +208,7 @@ bool operator!=(const Complex& a, const Complex& b)
 
 bool operator!=(const Complex& a, double r)
 {	
-	if (a.real() + a.imag() != r)
+	if (a.real() != r && a.imag() != 0)
 		return true;
 	else
 		return false;
