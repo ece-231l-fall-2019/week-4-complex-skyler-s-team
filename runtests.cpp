@@ -88,8 +88,8 @@ int main()
 
 	Complex num5(54.93, 85.32);
 	Complex num6(62.12, 9.38);
-
-	Assert(norm(num5)== 101.473, "norm(num5)");
+	
+	Assert(((norm(num6))==3946.88), "norm(num6)");
         Assert(conj(num6).real()==62.12 && conj(num6).imag() == -9.38,
 		       	"conj(num6)");
 
@@ -100,10 +100,18 @@ int main()
 	Assert(!(num5==120.2), "num5==120.2");
        	Assert(!(num5!=140.25), "num5!=140.25");
 
+/*
+	Complex num7(-9.23, 12.4);
+	Complex num8(12.4, -9.23);
 
-	//Complex num7(-9.23, 12.4);
-	//Complex num8(12.4, -9.23);
+	Assert((num7+=num8).real() == , (num7+=num8).imag() == , "num7+=num8");
+	Assert((num7-=num8).real() ==, (num7-=num8).imag() ==, "num7-=num8");
+	Assert((num7*=num8).real() ==, (num7*=num8).imag() ==, "num7*=num8");
+	Assert((num7/=num8).real() ==, (num7/=num8).imag() ==, "num7/=num8");
 
+	
+
+*/
 	return 0;
 }
 
