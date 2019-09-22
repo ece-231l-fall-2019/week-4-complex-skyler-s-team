@@ -31,7 +31,52 @@ double Complex::imag() const
 	return _imag;
 }
 
+/*
+// assignment
+Complex& operator=(double r)
+{
+	
 
+}
+
+Complex& operator=(const Complex& z)
+{
+	_real = z.real();
+	_imag = z.imag();
+
+
+}
+
+Complex& operator+=(const Complex& z)
+{
+	_real += z.real();
+	-imag += z.imag();
+
+	return *this;
+
+}
+
+Complex& operator-=(const Complex& z);i
+{
+	
+	_real -= z.real();
+	-imag -= z.imag();
+
+	return *this;
+
+}
+
+Complex& operator*=(const Complex& z);
+{
+
+
+}
+
+Complex& operator/=(const Complex& z);
+{
+
+}
+*/
 // basic math operations
 Complex operator+(const Complex& a, const Complex& b)
 {
@@ -99,10 +144,15 @@ Complex operator/(const Complex& a, const Complex& b)
 }
 
 // norm returns the squared magnitude of z
-double norm(const Complex& z)			//FOIL
-{	
-	double total;
-	total = (z.real() * z.real()) + (z.imag() * z.imag());
+
+double norm(const Complex& z)			
+{						
+	double first = z.real() * z.real();	
+	double inNout = 2 * z.real() * z.imag();	
+	double last = -1 * z.imag() * z.imag();	 
+
+	double reals = first + last;		
+	double total = reals + inNout;
 	return total;
 }
 
@@ -114,11 +164,13 @@ Complex conj(const Complex& z)
 
 	return total;
 }
+
 Complex& Complex::operator=(const Complex& z)
 {
         _real = z.real();
         _imag = z.imag();
-        return *this;
+
+	return *this;
 }
 
 // comparison
