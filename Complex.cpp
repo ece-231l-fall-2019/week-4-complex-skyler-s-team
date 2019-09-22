@@ -100,27 +100,17 @@ Complex operator/(const Complex& a, const Complex& b)
 
 // norm returns the squared magnitude of z
 double norm(const Complex& z)			//FOIL
-{						//(8+i)(8+i)
-	double first = z.real() * z.real();	//8*4
-	double inNout = 2*z.real() * z.imag();	//(8*i + 8*i) = 2(8*i)
-	double last = -1*z.imag() * z.imag();	//i*i = -1 
-
-	double reals = first + last;		//inNout = inner + outer parts of FOIL
-	double total = reals + inNout;
-
+{	
+	double total;
+	total = (z.real() * z.real()) + (z.imag() * z.imag());
 	return total;
 }
 
 
 // conj returns the complex conjugate of z
 Complex conj(const Complex& z)
-{							//(a + bi)(a - bi)
-	double reals1 = z.real() * z.real();		//a * a = a^2
-        double reals2 = -1*z.imag() * z.imag();		// bi * bi = b^2 i^2 => i^2 = -1 => -1*b^2
-
-	double reals_tot = reals1 + reals2;		//no need to calculate inner and outer since they cancel each other out
-	
-	Complex total(reals_tot, 0);
+{
+	Complex total(z.real(), -(z.imag()));
 
 	return total;
 }
