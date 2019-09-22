@@ -143,6 +143,7 @@ Complex operator/(const Complex& a, const Complex& b)
 }
 
 // norm returns the squared magnitude of z
+
 double norm(const Complex& z)			
 {						
 	double first = z.real() * z.real();	
@@ -151,20 +152,14 @@ double norm(const Complex& z)
 
 	double reals = first + last;		
 	double total = reals + inNout;
-
 	return total;
 }
 
 
 // conj returns the complex conjugate of z
 Complex conj(const Complex& z)
-{					
-	double reals1 = z.real() * z.real();	
-        double reals2 =  z.imag() * z.imag();
-
-	double reals_tot = reals1 + reals2;		
-	
-	Complex total(reals_tot, 0.0);
+{
+	Complex total(z.real(), -(z.imag()));
 
 	return total;
 }
