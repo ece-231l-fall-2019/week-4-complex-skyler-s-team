@@ -1,4 +1,5 @@
 #include "Complex.h"
+#include <cmath>
 
 Complex::Complex()
 {
@@ -35,14 +36,24 @@ double Complex::imag() const
 // assignment
 Complex& Complex::operator=(double r)
 {
-	
+	_real = r;
+	_imag = 0;	
 
 }
 
-Complex& Complex::operator+=(const Complex& z)
+
+Complex& operator=(const Complex& z)
+{
+	_real = z.real();
+	_imag = z.imag();
+
+	return *this;
+}
+
+Complex& operator+=(const Complex& z)
 {
 	_real += z.real();
-	-imag += z.imag();
+	_imag += z.imag();
 
 	return *this;
 
@@ -52,10 +63,9 @@ Complex& Complex::operator-=(const Complex& z)
 {
 	
 	_real -= z.real();
-	-imag -= z.imag();
+	_imag -= z.imag();
 
 	return *this;
-
 }
 */
 Complex& Complex::operator*=(const Complex& z)
@@ -71,6 +81,7 @@ Complex& Complex::operator*=(const Complex& z)
 
 Complex& Complex::operator/=(const Complex&z)
 {
+
 	double denom;
 	denom = (z.real()*z.real()) + (z.imag()*z.imag());
 	double n_real = (_real * z.real()) - (_imag * -z.imag());
@@ -79,6 +90,7 @@ Complex& Complex::operator/=(const Complex&z)
 	_imag = n_imag /denom;
 	return *this;
 
+	return *this;
 }
 // basic math operations
 Complex& Complex::operator=(const Complex& z)
@@ -126,14 +138,6 @@ Complex operator*(const Complex& a, const Complex& b)
 
 Complex operator/(const Complex& a, const Complex& b)
 {
-	/*Complex bconj(b.real(), -b.imag());
-	Complex num, den; // denominator always has only real part
-	num = a * bconj;
-	den = b * bconj;
-	double reals = num.real() / den.real();
-	double imags = num.imag() / den.real();
-	*/
-
 	double top_first = a.real() * b.real();
 	double top_inNout = a.real() * -1 * b.imag() + b.real() * a.imag();
 	double top_last = a.imag() * b.imag();
@@ -155,15 +159,10 @@ Complex operator/(const Complex& a, const Complex& b)
 }
 
 // norm returns the squared magnitude of z
-
 double norm(const Complex& z)			
 {						
-	double first = z.real() * z.real();	
-	double inNout = 2 * z.real() * z.imag();	
-	double last = -1 * z.imag() * z.imag();	 
+	double total = z.real() * z.real() + z.imag() * z.imag();
 
-	double reals = first + last;		
-	double total = reals + inNout;
 	return total;
 }
 
@@ -188,7 +187,7 @@ bool operator==(const Complex& a, const Complex& b)
 
 bool operator==(const Complex& a, double r)
 {
-	if (a.real() + a.imag() == r)
+	if (a.real() == r && a.imag() == 0)
 		return true;
 	else
 		return false;
@@ -207,7 +206,7 @@ bool operator!=(const Complex& a, const Complex& b)
 
 bool operator!=(const Complex& a, double r)
 {	
-	if (a.real() + a.imag() != r)
+	if (a.real() != r && a.imag() != 0)
 		return true;
 	else
 		return false;
