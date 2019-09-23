@@ -9,6 +9,8 @@ Complex::Complex()
 
 
 // Constructors
+Complex();
+
 Complex::Complex(double re, double im)
 {
 	_real = re;
@@ -38,7 +40,6 @@ Complex& Complex::operator=(double r)
 {
 	_real = r;
 	_imag = 0;	
-	
 	return *this;
 }
 
@@ -83,7 +84,6 @@ Complex& Complex::operator/=(const Complex&z)
 	_imag = n_imag /denom;
 	return *this;
 
-	return *this;
 }
 // basic math operations
 Complex& Complex::operator=(const Complex& z)
@@ -180,7 +180,9 @@ bool operator==(const Complex& a, const Complex& b)
 
 bool operator==(const Complex& a, double r)
 {
+
 	if (a.real() == r && a.imag() == 0)
+
 		return true;
 	else
 		return false;
