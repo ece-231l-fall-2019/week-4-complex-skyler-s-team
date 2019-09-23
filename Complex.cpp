@@ -67,25 +67,40 @@ Complex& Complex::operator-=(const Complex& z)
 
 	return *this;
 }
-
+*/
 Complex& Complex::operator*=(const Complex& z)
 {
-		
-	_real *= z.real();
-	_imag *= -1*z.imag();
+	double n_real = (_real *z.real()) - (_imag * z.imag());
+	double n_imag = (_imag * z.real()) + (_real * z.imag());
+	_real = n_real;
+	_imag = n_imag;
 
-	return *this
+	return *this;
+
 }
 
 Complex& Complex::operator/=(const Complex&z)
 {
-	_real /= ;
-	_imag /= ;
+
+	double denom;
+	denom = (z.real()*z.real()) + (z.imag()*z.imag());
+	double n_real = (_real * z.real()) - (_imag * -z.imag());
+        double n_imag = (_imag * z.real()) + (_real * -z.imag());
+	_real = n_real / denom;
+	_imag = n_imag /denom;
+	return *this;
 
 	return *this;
 }
-*/
 // basic math operations
+Complex& Complex::operator=(const Complex& z)
+{
+        _real = z.real();
+        _imag = z.imag();
+
+        return *this;
+}
+
 Complex operator+(const Complex& a, const Complex& b)
 {
 	double reals = a.real() + b.real();
@@ -158,14 +173,6 @@ Complex conj(const Complex& z)
 	Complex total(z.real(), -(z.imag()));
 
 	return total;
-}
-
-Complex& Complex::operator=(const Complex& z)
-{
-        _real = z.real();
-        _imag = z.imag();
-
-	return *this;
 }
 
 // comparison
