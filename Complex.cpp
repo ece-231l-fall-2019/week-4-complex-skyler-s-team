@@ -1,4 +1,5 @@
 #include "Complex.h"
+#include <cmath>
 
 Complex::Complex()
 {
@@ -143,16 +144,16 @@ Complex operator/(const Complex& a, const Complex& b)
 }
 
 // norm returns the squared magnitude of z
-
 double norm(const Complex& z)			
 {						
-	double first = z.real() * z.real();	
-	double inNout = 2 * z.real() * z.imag();	
-	double last = -1 * z.imag() * z.imag();	 
+	double reals_1 = z.real() * z.real();
+	double reals_2 = -1 * z.imag() * z.imag();
+	
+	double total = reals_1 + reals_2;
+	
+	double real_total = sqrt(total);
 
-	double reals = first + last;		
-	double total = reals + inNout;
-	return total;
+	return real_total;
 }
 
 
