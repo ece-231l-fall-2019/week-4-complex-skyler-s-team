@@ -32,25 +32,18 @@ double Complex::imag() const
 	return _imag;
 }
 
-/*
+
 // assignment
 Complex& Complex::operator=(double r)
 {
 	_real = r;
 	_imag = 0;	
-
-}
-
-
-Complex& operator=(const Complex& z)
-{
-	_real = z.real();
-	_imag = z.imag();
-
+	
 	return *this;
 }
 
-Complex& operator+=(const Complex& z)
+
+Complex& Complex::operator+=(const Complex& z)
 {
 	_real += z.real();
 	_imag += z.imag();
@@ -67,7 +60,7 @@ Complex& Complex::operator-=(const Complex& z)
 
 	return *this;
 }
-*/
+
 Complex& Complex::operator*=(const Complex& z)
 {
 	double n_real = (_real *z.real()) - (_imag * z.imag());
@@ -217,7 +210,7 @@ bool operator!=(const Complex& a, double r)
 
 std::ostream& operator<<(std::ostream& out, const Complex& z)
 {
-	out<< z.real() << (z.imag() < 0? "-": "+") << z.imag();
+	out<< z.real() << (z.imag() > 0? "+": "") << z.imag();
 
 	return out;
 }
