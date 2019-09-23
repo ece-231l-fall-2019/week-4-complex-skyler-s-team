@@ -89,7 +89,7 @@ int main()
 	Complex num5(54.93, 85.32);
 	Complex num6(62.12, 9.38);
 	
-	Assert(((norm(num6))==3946.88), "norm(num6)");
+	Assert(((norm(num6))==3946.8788), "norm(num6)");
         Assert(conj(num6).real()==62.12 && conj(num6).imag() == -9.38,
 		       	"conj(num6)");
 

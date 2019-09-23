@@ -41,7 +41,7 @@ Complex& Complex::operator=(double r)
 
 }
 
-<<<<<<< HEAD
+
 Complex& operator=(const Complex& z)
 {
 	_real = z.real();
@@ -51,9 +51,6 @@ Complex& operator=(const Complex& z)
 }
 
 Complex& operator+=(const Complex& z)
-=======
-Complex& Complex::operator+=(const Complex& z)
->>>>>>> b1a64f2f12399352fa38effab10663bf53600b57
 {
 	_real += z.real();
 	_imag += z.imag();
@@ -62,25 +59,16 @@ Complex& Complex::operator+=(const Complex& z)
 
 }
 
-<<<<<<< HEAD
-Complex& operator-=(const Complex& z)
-=======
 Complex& Complex::operator-=(const Complex& z)
->>>>>>> b1a64f2f12399352fa38effab10663bf53600b57
 {
 	
 	_real -= z.real();
 	_imag -= z.imag();
 
 	return *this;
-
 }
 
-<<<<<<< HEAD
-Complex& operator*=(const Complex& z)
-=======
 Complex& Complex::operator*=(const Complex& z)
->>>>>>> b1a64f2f12399352fa38effab10663bf53600b57
 {
 		
 	_real *= z.real();
@@ -158,14 +146,9 @@ Complex operator/(const Complex& a, const Complex& b)
 // norm returns the squared magnitude of z
 double norm(const Complex& z)			
 {						
-	double reals_1 = z.real() * z.real();
-	double reals_2 = -1 * z.imag() * z.imag();
-	
-	double total = reals_1 + reals_2;
-	
-	double real_total = sqrt(total);
+	double total = z.real() * z.real() + z.imag() * z.imag();
 
-	return real_total;
+	return total;
 }
 
 
