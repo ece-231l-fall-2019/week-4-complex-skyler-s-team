@@ -1,4 +1,5 @@
 #include "Complex.h"
+#include <cmath>
 
 Complex::Complex()
 {
@@ -33,7 +34,40 @@ double Complex::imag() const
 	return _imag;
 }
 
+/*
+// assignment
+Complex& Complex::operator=(double r)
+{
+	_real = r;
+	_imag = 0;	
 
+}
+
+
+Complex& operator=(const Complex& z)
+{
+	_real = z.real();
+	_imag = z.imag();
+
+	return *this;
+}
+
+Complex& operator+=(const Complex& z)
+{
+	_real += z.real();
+	_imag += z.imag();
+
+	return *this;
+
+}
+
+Complex& Complex::operator-=(const Complex& z)
+{
+	
+	_real -= z.real();
+	_imag -= z.imag();
+
+<<<<<<< HEAD
 	// Constructors
 	Complex();
 	Complex(double re, double im);
@@ -52,6 +86,28 @@ double Complex::imag() const
 	Complex& operator/=(const Complex& z);
 
 	
+=======
+	return *this;
+}
+
+Complex& Complex::operator*=(const Complex& z)
+{
+		
+	_real *= z.real();
+	_imag *= -1*z.imag();
+
+	return *this
+}
+
+Complex& Complex::operator/=(const Complex&z)
+{
+	_real /= ;
+	_imag /= ;
+
+	return *this;
+}
+*/
+>>>>>>> complex-branch
 // basic math operations
 Complex operator+(const Complex& a, const Complex& b)
 {
@@ -90,16 +146,20 @@ Complex operator*(const Complex& a, const Complex& b)
 
 Complex operator/(const Complex& a, const Complex& b)
 {
+	double top_first = a.real() * b.real();
+	double top_inNout = a.real() * -1 * b.imag() + b.real() * a.imag();
+	double top_last = a.imag() * b.imag();
+
+	double bot_first = b.real() * b.real();
+	double bot_last =  b.imag() * b.imag();
 	
-        
-//	VERY BUGGY
-	Complex bconj(b.real(), -b.imag());
-	Complex num, den; // denominator always has only real part
-	num = a * bconj;
-	den = b * bconj;
-	double reals = num.real() / den.real();
-	double imags = num.imag() / den.real();
+	double top_reals = top_last + top_first;
+	double top_imags = top_inNout;
+	double bottom = bot_first + bot_last;
 	
+	double reals = top_reals / bottom;
+	double imags = top_imags / bottom;
+
 	Complex total(reals,imags);
 
 
@@ -107,14 +167,9 @@ Complex operator/(const Complex& a, const Complex& b)
 }
 
 // norm returns the squared magnitude of z
-double norm(const Complex& z)			//FOIL
-{						//(8+i)(8+i)
-	double first = z.real() * z.real();	//8*4
-	double inNout = 2*z.real() * z.imag();	//(8*i + 8*i) = 2(8*i)
-	double last = -1*z.imag() * z.imag();	//i*i = -1 
-
-	double reals = first + last;		//inNout = inner + outer parts of FOIL
-	double total = reals + inNout;
+double norm(const Complex& z)			
+{						
+	double total = z.real() * z.real() + z.imag() * z.imag();
 
 	return total;
 }
@@ -122,21 +177,18 @@ double norm(const Complex& z)			//FOIL
 
 // conj returns the complex conjugate of z
 Complex conj(const Complex& z)
-{							//(a + bi)(a - bi)
-	double reals1 = z.real() * z.real();		//a * a = a^2
-        double reals2 = -1*z.imag() * z.imag();		// bi * bi = b^2 i^2 => i^2 = -1 => -1*b^2
-
-	double reals_tot = reals1 + reals2;		//no need to calculate inner and outer since they cancel each other out
-	
-	Complex total(reals_tot, 0);
+{
+	Complex total(z.real(), -(z.imag()));
 
 	return total;
 }
+
 Complex& Complex::operator=(const Complex& z)
 {
         _real = z.real();
         _imag = z.imag();
-        return *this;
+
+	return *this;
 }
 
 // comparison
@@ -151,7 +203,11 @@ bool operator==(const Complex& a, const Complex& b)
 
 bool operator==(const Complex& a, double r)
 {
+<<<<<<< HEAD
 	if (a.real() == r)
+=======
+	if (a.real() == r && a.imag() == 0)
+>>>>>>> complex-branch
 		return true;
 	else
 		return false;
