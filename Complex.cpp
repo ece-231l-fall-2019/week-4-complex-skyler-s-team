@@ -34,13 +34,14 @@ double Complex::imag() const
 
 /*
 // assignment
-Complex& operator=(double r)
+Complex& Complex::operator=(double r)
 {
 	_real = r;
 	_imag = 0;	
 
 }
 
+<<<<<<< HEAD
 Complex& operator=(const Complex& z)
 {
 	_real = z.real();
@@ -50,6 +51,9 @@ Complex& operator=(const Complex& z)
 }
 
 Complex& operator+=(const Complex& z)
+=======
+Complex& Complex::operator+=(const Complex& z)
+>>>>>>> b1a64f2f12399352fa38effab10663bf53600b57
 {
 	_real += z.real();
 	_imag += z.imag();
@@ -58,7 +62,11 @@ Complex& operator+=(const Complex& z)
 
 }
 
+<<<<<<< HEAD
 Complex& operator-=(const Complex& z)
+=======
+Complex& Complex::operator-=(const Complex& z)
+>>>>>>> b1a64f2f12399352fa38effab10663bf53600b57
 {
 	
 	_real -= z.real();
@@ -68,7 +76,11 @@ Complex& operator-=(const Complex& z)
 
 }
 
+<<<<<<< HEAD
 Complex& operator*=(const Complex& z)
+=======
+Complex& Complex::operator*=(const Complex& z)
+>>>>>>> b1a64f2f12399352fa38effab10663bf53600b57
 {
 		
 	_real *= z.real();
@@ -77,7 +89,7 @@ Complex& operator*=(const Complex& z)
 	return *this
 }
 
-Complex& operator/=(const Complex& z);
+Complex& Complex::operator/=(const Complex&z)
 {
 	_real /= ;
 	_imag /= ;
