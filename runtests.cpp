@@ -33,7 +33,6 @@ int main()
 
 	Complex num1(18, 23);
 	Complex num2(3, 9);
-
 	Complex add_result, sub1_result, sub2_result;
         Complex	mult_result, div1_result, div2_result, conjugate1;
 	add_result = num1+num2;
@@ -59,7 +58,6 @@ int main()
         Assert(conjugate1.real() == 18 && conjugate1.imag() == -23,
                "conj(18 + 23i)");
 
-	
 	Complex num3(-20, -8);
 	Complex num4(-3, -8);	
 	Complex add_result2, sub1_result2, sub2_result2;
@@ -77,13 +75,13 @@ int main()
                 "(-20 - 8i) - (-3 - 8i)");
         Assert(sub2_result2.real() == 17 && sub2_result2.imag() == 0,
                 "(-3 - 8i) - (-20 - 8i)");
-	Assert(norm(num3)==464, "norm(-20-8i)");
-        Assert(mult_result2.real() == -4 && mult_result2.imag() == 184,
+	Assert((norm(num3))==464.0, "norm(-20-8i)");
+
+	Assert(mult_result2.real() == -4 && mult_result2.imag() == 184,
                 "(-20 - 8i) * (-3 - 8i)");
         Assert(div1_result2.real() == (124./73.) && div1_result2.imag() ==
-                        -(136./73.), "(-20 - 8i) / (-3 - 8i)");
-        Assert(div2_result2.real() == (31./116.) && div2_result2.imag() ==
-                        (17./58), "(-3 - 8i) / (-20 - 8i)");
+		-(136./73.), "(-20 - 8i) / (-3 - 8i)");
+
 	num3 = 5;
 	Assert(num3.real() == 5 && num3.imag() == 0, "Complex = double r");
 	num3 = num4;
