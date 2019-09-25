@@ -9,7 +9,6 @@ Complex::Complex()
 
 
 // Constructors
-Complex();
 
 Complex::Complex(double re, double im)
 {
