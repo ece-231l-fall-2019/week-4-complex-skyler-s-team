@@ -57,7 +57,7 @@ int main()
         Assert(div2_result.real() == (261./853.) && div2_result.imag() ==
 			(93./853), "(3 + 9i) / (18 + 23i)");
         Assert(conjugate1.real() == 18 && conjugate1.imag() == -23,
-               "conjugate of (18 + 23i)");
+               "conj(18 + 23i)");
 
 	
 	Complex num3(-20, -8);
@@ -77,38 +77,38 @@ int main()
                 "(-20 - 8i) - (-3 - 8i)");
         Assert(sub2_result2.real() == 17 && sub2_result2.imag() == 0,
                 "(-3 - 8i) - (-20 - 8i)");
-	Assert(norm(num3)==464, "norm of (-20-8i)");
+	Assert(norm(num3)==464, "norm(-20-8i)");
         Assert(mult_result2.real() == -4 && mult_result2.imag() == 184,
                 "(-20 - 8i) * (-3 - 8i)");
         Assert(div1_result2.real() == (124./73.) && div1_result2.imag() ==
                         -(136./73.), "(-20 - 8i) / (-3 - 8i)");
         Assert(div2_result2.real() == (31./116.) && div2_result2.imag() ==
                         (17./58), "(-3 - 8i) / (-20 - 8i)");
-
+	num3 = 5;
+	Assert(num3.real() == 5 && num3.imag() == 0, "Complex = double r");
+	num3 = num4;
+	Assert(num3.real() == -3 && num3.imag() == -8, "Complex = Complex");
 
 	Complex num5(54.93, 85.32);
-	Complex num6(62.12, 9.38);
-	Complex test1(1, 2);
-	double i = 5;
-	Assert((norm(test1)== i), "tests");
+	Complex num6(62.125, 9.175);
+	
+	Assert((norm(num6))== 3943.69625, "norm((62.125+9.175i))");
+        Assert(conj(num6).real()==62.125 && conj(num6).imag() == -9.175,
+		       	"conj((62.125+9.175i))");
 
-	Assert((norm(num6))==9867197/2500, "norm(num6)");
-        Assert(conj(num6).real()==62.12 && conj(num6).imag() == -9.38,
-		       	"conj(num6)");
-
-	Assert(!(num5==num6), "num5==num6");
-	Assert(!(num5==140.25), "num5==140.25");
-	Assert(num5!=num6, "num5!=num6");
-	Assert(num5!=120.2, "num5!=120.2");
-	Assert(!(num5==120.2), "num5==120.2");
-       	Assert(num5!=140.25, "num5!=140.25");
+	Assert(!(num5==num6), "(54.93+85.32i)==(62.125+9.175i)");
+	Assert(!(num5==140.25), "! (54.93+85.32i)==140.25");
+	Assert(num5!=num6, "(54.93+85.32i)!=(62.125+9.175i)");
+	Assert(num5!=120.2, "(54.93+85.32i)!=120.2");
+	Assert(!(num5==120.2), "! (54.93+85.32i)==120.2");
+       	Assert(num5!=140.25, "(54.93+85.32i)!=140.25");
         
 	Complex num9(10, -2);
 	Complex num10(5, 3);
 	num9 += num10;
 	Assert(num9.real() == 15 &&  num9.imag() == 1, "num9+=num10");
 	num9 -= num10;
-        Assert(num9.real() == 10 && num9.imag() == 3, "num9-=num10");
+        Assert(num9.real() == 10 && num9.imag() == -2, "num9-=num10");
 
 	Complex num7(-9, 12);
 	Complex num8(12, -9);
@@ -119,6 +119,9 @@ int main()
 	num7/=num8;
 	Assert(num7.real() == -9 &&
 		       	num7.imag() == 12, "num7/=num8");
+
+	std::cout << num8 << std::endl;
+	std::cout << num7 << std::endl;
 	return 0;
 }
 
