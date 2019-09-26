@@ -41,6 +41,13 @@ Complex& Complex::operator=(double r)
 	return *this;
 }
 
+Complex& Complex::operator=(const Complex& z)
+{
+        _real = z.real();
+        _imag = z.imag();
+
+        return *this;
+}
 
 Complex& Complex::operator+=(const Complex& z)
 {
@@ -48,7 +55,6 @@ Complex& Complex::operator+=(const Complex& z)
 	_imag += z.imag();
 
 	return *this;
-
 }
 
 Complex& Complex::operator-=(const Complex& z)
@@ -68,7 +74,6 @@ Complex& Complex::operator*=(const Complex& z)
 	_imag = n_imag;
 
 	return *this;
-
 }
 
 Complex& Complex::operator/=(const Complex&z)
@@ -80,18 +85,10 @@ Complex& Complex::operator/=(const Complex&z)
         double n_imag = (_imag * z.real()) + (_real * -z.imag());
 	_real = n_real / denom;
 	_imag = n_imag /denom;
+	
 	return *this;
-
 }
 // basic math operations
-Complex& Complex::operator=(const Complex& z)
-{
-        _real = z.real();
-        _imag = z.imag();
-
-        return *this;
-}
-
 Complex operator+(const Complex& a, const Complex& b)
 {
 	double reals = a.real() + b.real();
@@ -210,7 +207,7 @@ bool operator!=(const Complex& a, double r)
 
 std::ostream& operator<<(std::ostream& out, const Complex& z)
 {
-	out<< z.real() << (z.imag() > 0? "+": "") << z.imag();
+	out<< z.real() << (z.imag() > 0? "+": "") << z.imag() << "i";
 
 	return out;
 }
