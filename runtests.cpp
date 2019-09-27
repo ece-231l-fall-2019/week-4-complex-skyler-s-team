@@ -1,14 +1,20 @@
 #include <iostream>
-
+#include <cstdlib>
 // change the value below to 1 to run tests against your Complex class.
 // change the value below to 0 to run tests against the built in std::complex.
 
-#if 1
+#if 0
 #include "Complex.h"
 #else
 #include <complex>
 typedef std::complex<double> Complex;
 #endif
+
+bool Approx(double val1, double val2, double eps)
+{
+        return abs(val1 - val2) < eps;
+
+}
 
 void Assert(bool cond, std::string message)
 {
@@ -75,7 +81,7 @@ int main()
                 "(-20 - 8i) - (-3 - 8i)");
         Assert(sub2_result2.real() == 17 && sub2_result2.imag() == 0,
                 "(-3 - 8i) - (-20 - 8i)");
-	Assert((norm(num3))==464.0, "norm(-20-8i)");
+	Assert(Approx(norm(num3), 464.0, 0.00000001), "norm(-20-8i)");
 
 	Assert(mult_result2.real() == -4 && mult_result2.imag() == 184,
                 "(-20 - 8i) * (-3 - 8i)");
@@ -90,7 +96,7 @@ int main()
 	Complex num5(54.93, 85.32);
 	Complex num6(62.125, 9.175);
 	
-	Assert((norm(num6))== 3943.69625, "norm((62.125+9.175i))");
+	Assert(Approx(norm(num6), 3943.69625, 0.00000001), "norm((62.125+9.175i))");
         Assert(conj(num6).real()==62.125 && conj(num6).imag() == -9.175,
 		       	"conj((62.125+9.175i))");
 
