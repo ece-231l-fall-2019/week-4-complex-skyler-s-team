@@ -108,7 +108,7 @@ int main()
 	num9 += num10;
 	Assert(num9.real() == 15 &&  num9.imag() == 1, "num9+=num10");
 	num9 -= num10;
-        Assert(num9.real() == 10 && num9.imag() == 3, "num9-=num10");
+        Assert(num9.real() == 5  && num9.imag() == -5, "num9-=num10");
 
 	Complex num7(-9, 12);
 	Complex num8(12, -9);
