@@ -1,5 +1,6 @@
 #include "Complex.h"
 #include <cmath>
+#include <cstdlib>
 
 Complex::Complex()
 {
@@ -214,4 +215,6 @@ std::ostream& operator<<(std::ostream& out, const Complex& z)
 	out<< z.real() << (z.imag() > 0? "+": "") << z.imag();
 
 	return out;
+
 }
+
