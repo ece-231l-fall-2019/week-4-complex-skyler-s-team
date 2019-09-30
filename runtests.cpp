@@ -112,7 +112,11 @@ int main()
 	num9 += num10;
 	Assert(num9.real() == 15 &&  num9.imag() == 1, "num9+=num10");
 	num9 -= num10;
+<<<<<<< HEAD
+        Assert(num9.real() == 5  && num9.imag() == -5, "num9-=num10");
+=======
         Assert(num9.real() == 10 && num9.imag() == -2, "num9-=num10");
+>>>>>>> ef2bbb1243747c2e8560b0d427536bf482e9a103
 
 	Complex num7(-9, 12);
 	Complex num8(12, -9);
